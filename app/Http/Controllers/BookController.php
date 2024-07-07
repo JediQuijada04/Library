@@ -103,7 +103,7 @@ class BookController extends Controller
     }
 
      public function forceDeleteBook($id){
-        $book = Book::find($id);
+         $book = Book::withTrashed()->find($id);
 
         if(!$book) {
             return response()->json(['message' => 'Book not found'], 404);
